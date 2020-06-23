@@ -12,8 +12,15 @@ body {
 
 header {
   background-color: #000000;
-  height: 4vw;
+  height: 7vw;
   color: #ffffff;
   text-align: center;
   padding: 5px;
+}
+
+a {
+  color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
 }
