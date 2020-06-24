@@ -19,6 +19,12 @@ class App extends Component {
       .then((res) => this.setState({ users: res.data }));
   }
   render() {
+    async function fetchUsers() {
+      const res = await fetch ('https://jsonplaceholder.typicode.com/users');
+      const data = await res.json();
+      console.log(data);
+    }
+    fetchUsers();
     return (
       <Router>
         <Container>
