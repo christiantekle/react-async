@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Header from "./components/Header";
 import Users from "./components/Users";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import SearchUsers from "./components/SearchUsers";
 import About from "./components/About";
 import { Container } from "@material-ui/core";
 import "./App.css";
@@ -22,7 +23,16 @@ class App extends Component {
       <Router>
         <Container>
           <Header />
-          <Route exact path="/" component={() => <Users users={this.state.users}/>} />
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <Fragment>
+                <SearchUsers users={this.state.users}/>
+                <Users users={this.state.users} />
+             </Fragment>
+            )}
+          />
           <Route path="/About" component={About} />
         </Container>
       </Router>
