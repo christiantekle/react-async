@@ -8,12 +8,21 @@ import "./App.css";
 import axios from "axios";
 
 class App extends Component {
+  state = {
+    users: [],
+  };
+
+  componentDidMount() {
+    axios
+      .get("https://jsonplaceholder.typicode.com/users?_limit=10")
+      .then((res) => this.setState({ users: res.data }));
+  }
   render() {
     return (
       <Router>
         <Container>
           <Header />
-          <Route exact path="/" component={Users} />
+          <Route exact path="/" component={() => <Users users={this.state.users}/>} />
           <Route path="/About" component={About} />
         </Container>
       </Router>
